@@ -1,5 +1,6 @@
 ﻿using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
+using FFXIVClientStructs.FFXIV.Client.LayoutEngine;
 
 namespace XIVComboExpandedPlugin.Combos;
 
@@ -106,6 +107,131 @@ internal static class PCT
     }
 }
 
+internal class PictomancerSubtractiveFireSTCombo : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PctAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == PCT.FireRedST || actionID == PCT.BlizzardCyanST)
+        {
+            if (IsEnabled(CustomComboPreset.PictomancerSubtractiveSTCombo))
+            {
+                if (!HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.FireRedST);
+                if (HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.BlizzardCyanST);
+            }
+        }
+
+        return actionID;
+    }
+}
+
+internal class PictomancerSubtractiveFireAoECombo : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PctAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == PCT.FireRedAoE || actionID == PCT.BlizzardCyanAoE)
+        {
+            if (IsEnabled(CustomComboPreset.PictomancerSubtractiveAoECombo))
+            {
+                if (!HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.FireRedAoE);
+                if (HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.BlizzardCyanAoE);
+            }
+        }
+
+        return actionID;
+    }
+}
+
+internal class PictomancerSubtractiveAeroCombo : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PctAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == PCT.AeroGreenST || actionID == PCT.EarthYellowST)
+        {
+            if (IsEnabled(CustomComboPreset.PictomancerSubtractiveSTCombo))
+            {
+                if (!HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.AeroGreenST);
+                if (HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.EarthYellowST);
+            }
+        }
+
+        return actionID;
+    }
+}
+
+internal class PictomancerSubtractiveAeroAoECombo : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PctAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == PCT.AeroGreenAoE || actionID == PCT.EarthYellowAoE)
+        {
+            if (IsEnabled(CustomComboPreset.PictomancerSubtractiveAoECombo))
+            {
+                if (!HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.AeroGreenAoE);
+                if (HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.EarthYellowAoE);
+            }
+        }
+
+        return actionID;
+    }
+}
+
+internal class PictomancerSubtractiveWaterCombo : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PctAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == PCT.WaterBlueST || actionID == PCT.ThunderMagentaST)
+        {
+            if (IsEnabled(CustomComboPreset.PictomancerSubtractiveSTCombo))
+            {
+                if (!HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.WaterBlueST);
+                if (HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.ThunderMagentaST);   
+            }
+        }
+        return actionID;
+    }
+}
+
+internal class PictomancerSubtractiveWaterAoECombo : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PctAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == PCT.WaterBlueAoE || actionID == PCT.ThunderMagentaAoE)
+        {
+            if (IsEnabled(CustomComboPreset.PictomancerSubtractiveAoECombo))
+            {
+                if (!HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.WaterBlueAoE);
+                if (HasEffect(PCT.Buffs.SubstractivePalette))
+                    return OriginalHook(PCT.ThunderMagentaAoE);
+            }
+        }
+
+        return actionID;
+    }
+}
+
 internal class PictomancerSTCombo : CustomCombo
 {
     protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PctAny;
@@ -153,7 +279,7 @@ internal class PictomancerSTCombo : CustomCombo
                 {
                     if ((gauge.MooglePortraitReady || gauge.MadeenPortraitReady) &&
                         IsCooldownUsable(PCT.MogOftheAges))
-                            return OriginalHook(PCT.MogOftheAges);
+                        return OriginalHook(PCT.MogOftheAges);
                 }
             }
 
@@ -185,12 +311,7 @@ internal class PictomancerSTCombo : CustomCombo
                 if (gauge.Paint == 5 && HasEffect(PCT.Buffs.Aetherhues2))
                     return HasEffect(PCT.Buffs.MonochromeTones) ? PCT.CometBlack : PCT.HolyWhite;
             }
-
-            if (IsEnabled(CustomComboPreset.PictomancerSubtractiveSTCombo) &&
-                !HasEffect(PCT.Buffs.SubstractivePalette))
-                return OriginalHook(PCT.FireRedST);
         }
-
         return actionID;
     }
 }
@@ -215,7 +336,7 @@ internal class PictomancerAoECombo : CustomCombo
             {
                 if (HasEffect(PCT.Buffs.StarPrismReady) &&
                     (!IsEnabled(CustomComboPreset.PictomancerStarPrismAfterSubtractiveFeature) ||
-                    (!HasEffect(PCT.Buffs.SubstractivePalette) && !HasEffect(PCT.Buffs.SubstractiveReady))))
+                     (!HasEffect(PCT.Buffs.SubstractivePalette) && !HasEffect(PCT.Buffs.SubstractiveReady))))
                     return PCT.StarPrism;
             }
 
@@ -231,7 +352,7 @@ internal class PictomancerAoECombo : CustomCombo
                 if (IsEnabled(CustomComboPreset.PictomancerAutoMogOvercapCombo))
                 {
                     var moogleNext = (gauge.CreatureFlags & CreatureFlags.Pom) != 0 &&
-                        (gauge.CreatureFlags & CreatureFlags.Wings) == 0;
+                                     (gauge.CreatureFlags & CreatureFlags.Wings) == 0;
                     var madeenNext = (gauge.CreatureFlags & CreatureFlags.Claw) != 0;
 
                     if ((gauge.MooglePortraitReady || gauge.MadeenPortraitReady) && gauge.CreatureMotifDrawn &&
@@ -242,7 +363,7 @@ internal class PictomancerAoECombo : CustomCombo
                 {
                     if ((gauge.MooglePortraitReady || gauge.MadeenPortraitReady) &&
                         IsCooldownUsable(PCT.MogOftheAges))
-                            return OriginalHook(PCT.MogOftheAges);
+                        return OriginalHook(PCT.MogOftheAges);
                 }
             }
 
@@ -250,9 +371,9 @@ internal class PictomancerAoECombo : CustomCombo
             {
                 if (HasEffect(PCT.Buffs.MonochromeTones) &&
                     (!IsEnabled(CustomComboPreset.PictomancerCometAfterSubtractive) ||
-                    !HasEffect(PCT.Buffs.SubstractivePalette)) &&
+                     !HasEffect(PCT.Buffs.SubstractivePalette)) &&
                     (!IsEnabled(CustomComboPreset.PictomancerCometStarryOnly) ||
-                    HasEffect(PCT.Buffs.Inspiration)))
+                     HasEffect(PCT.Buffs.Inspiration)))
                     return PCT.CometBlack;
             }
 
@@ -274,13 +395,10 @@ internal class PictomancerAoECombo : CustomCombo
                 if (gauge.Paint == 5 && HasEffect(PCT.Buffs.Aetherhues2))
                     return HasEffect(PCT.Buffs.MonochromeTones) ? PCT.CometBlack : PCT.HolyWhite;
             }
-
-            if (IsEnabled(CustomComboPreset.PictomancerSubtractiveAoECombo) && !HasEffect(PCT.Buffs.SubstractivePalette))
-                return OriginalHook(PCT.FireRedAoE);
         }
 
         return actionID;
-    }
+        }
 }
 
 internal class PictomancerHolyCometCombo : CustomCombo
@@ -338,7 +456,7 @@ internal class PictomancerCreatureMotifCombo : CustomCombo
                 {
                     if ((gauge.MooglePortraitReady || gauge.MadeenPortraitReady) &&
                         IsCooldownUsable(PCT.MogOftheAges))
-                            return OriginalHook(PCT.MogOftheAges);
+                        return OriginalHook(PCT.MogOftheAges);
                 }
             }
 

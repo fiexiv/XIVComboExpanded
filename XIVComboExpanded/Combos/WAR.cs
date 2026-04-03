@@ -332,3 +332,19 @@ internal class WarriorBloodwhetting : CustomCombo
         return actionID;
     }
 }
+
+internal class WarriorInnerReleaseFeature : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.WarriorInnerReleaseSyncFeature;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == WAR.InnerRelease)
+        {
+            if (level < WAR.Levels.InnerRelease && level >= WAR.Levels.Berserk)
+                return WAR.Berserk;
+        }
+
+        return actionID;
+    }
+}

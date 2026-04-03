@@ -1,4 +1,5 @@
 using System;
+using Dalamud.Game.ClientState.JobGauge.Types;
 using XIVComboExpandedPlugin.Attributes;
 using XIVComboExpandedPlugin.Combos;
 
@@ -1493,14 +1494,14 @@ public enum CustomComboPreset
     // ====================================================================================
     #region PICTOMANCER
 
-    [IconsCombo([PCT.BlizzardCyanST, UTL.ArrowLeft, PCT.FireRedST, UTL.Blank, PCT.SubstractivePalette, UTL.Cross])]
+    [IconsCombo([PCT.BlizzardCyanST, PCT.EarthYellowST, PCT.ThunderMagentaST, UTL.ArrowLeft, PCT.FireRedST, PCT.AeroGreenST, PCT.WaterBlueST, UTL.Blank, PCT.SubstractivePalette, UTL.Cross])]
     [SectionCombo("Substractive")]
-    [CustomComboInfo("Subtractive Single-Target Combo", "Replace Blizzard in Cyan and its combo chain with Fire in Red and its combo chain when Subtractive Palette is not active.", PCT.JobID)]
+    [CustomComboInfo("Single-Target Combo", "Replaces Fire/Aero/Water ST with Blizzard/Stone/Thunder ST under subtractive", PCT.JobID)]
     PictomancerSubtractiveSTCombo = 4201,
 
-    [IconsCombo([PCT.BlizzardCyanAoE, UTL.ArrowLeft, PCT.FireRedAoE, UTL.Blank, PCT.SubstractivePalette, UTL.Cross])]
+    [IconsCombo([PCT.BlizzardCyanAoE, PCT.EarthYellowAoE , PCT.ThunderMagentaAoE, UTL.ArrowLeft, PCT.FireRedAoE, PCT.AeroGreenAoE, PCT.WaterBlueAoE, UTL.Blank, PCT.SubstractivePalette, UTL.Cross])]
     [SectionCombo("Substractive")]
-    [CustomComboInfo("Subtractive AoE Combo", "Replace Blizzard II in Cyan and its combo chain with Fire II in Red and its combo chain when Subtractive Palette is not active.", PCT.JobID)]
+    [CustomComboInfo("Fire AoE Combo", "Replaces Fire/Aero/Water AoE with Blizzard/Stone/Thunder AoE under subtractive", PCT.JobID)]
     PictomancerSubtractiveAoECombo = 4202,
 
     [IconsCombo([PCT.FireRedST, UTL.ArrowLeft, PCT.SubstractivePalette, UTL.Blank, UTL.Blank, UTL.Idea])]
@@ -2766,7 +2767,13 @@ public enum CustomComboPreset
     [ExpandedCustomCombo]
     [CustomComboInfo("Nascent Flash Level Sync", "Replace Nascent Flash with Raw Intuition when Level Synced.", WAR.JobID)]
     WarriorNascentFlashSyncFeature = 2106,
-
+    
+    [SectionCombo("Level Synchronization")]
+    [IconsCombo([WAR.InnerRelease, UTL.ArrowLeft, WAR.Berserk])]
+    [ExpandedCustomCombo]
+    [CustomComboInfo("Inner Release Level sync", "Replace Inner Release with Beserk when Level Synced.", WAR.JobID)]
+    WarriorInnerReleaseSyncFeature = 2115,
+        
     #endregion
     // ====================================================================================
     #region WHITE MAGE

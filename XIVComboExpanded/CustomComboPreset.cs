@@ -2499,6 +2499,16 @@ public enum CustomComboPreset
     [ExpandedCustomCombo]
     [CustomComboInfo("Demi Carbuncle Feature", "Replace Summon Bahamut with Summon Carbuncle when no pet has been summoned.", SMN.JobID)]
     SummonerDemiCarbuncleFeature = 2716,
+    
+    [IconsCombo([SMN.Deathflare, SMN.Sunflare, SMN.Rekindle, UTL.ArrowLeft, SMN.AstralFlow])]
+    [SectionCombo("Summons features")]
+    [CustomComboInfo("Astral Flow Feature", "Remove elementals from Astral Flow", SMN.JobID)]
+    SummonerReworkAstralFlow = 2721,
+    
+    [IconsCombo([SMN.CrimsonStrike, UTL.ArrowLeft, SMN.CrimsonCyclone])]
+    [SectionCombo("Summons features")]
+    [CustomComboInfo("Crimson Cyclone Fix", "Adds the combo back", SMN.JobID)]
+    SummonerReworkCrimsonCyclone = 2722,
 
     #endregion
     // ====================================================================================

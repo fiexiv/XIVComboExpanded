@@ -353,3 +353,51 @@ internal class SummonerPrimalSummons : CustomCombo
         return actionID;
     }
 }
+
+internal class SummonerReworkAstralFlow : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SummonerReworkAstralFlow;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        
+        if (IsEnabled(CustomComboPreset.SummonerReworkAstralFlow))
+            if (actionID == SMN.AstralFlow)
+            {
+                if (CanUseAction(SMN.Sunflare))
+                {
+                    return OriginalHook(SMN.Sunflare);
+                }
+                if (CanUseAction(SMN.Rekindle))
+                {
+                    return OriginalHook(SMN.Rekindle);
+                }
+                if (CanUseAction(SMN.Deathflare))
+                {
+                    return OriginalHook(SMN.Deathflare);
+                }
+            }
+
+        return actionID;
+    }
+}
+
+internal class SummonerReworkCrimsonCyclone : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SummonerReworkCrimsonCyclone;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        
+        if (IsEnabled(CustomComboPreset.SummonerReworkCrimsonCyclone))
+            if (actionID == SMN.CrimsonCyclone)
+            {
+                if (HasEffect(SMN.Buffs.CrimsonStrikeReady))
+                {
+                    return OriginalHook(SMN.CrimsonStrike);
+                }
+            }
+
+        return actionID;
+    }
+}

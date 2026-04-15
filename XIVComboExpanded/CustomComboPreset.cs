@@ -242,6 +242,12 @@ public enum CustomComboPreset
     [SectionCombo("Single Target")]
     [CustomComboInfo("Enochian Feature", "Replace Fire 4 and Blizzard 4 with whichever action you can currently use.", BLM.JobID)]
     BlackEnochianFeature = 2501,
+    
+    [IconsCombo([BLM.Fire, BLM.Blizzard, UTL.ArrowRight, BLM.Fire4, BLM.Blizzard4, UTL.Clock])]
+    [SectionCombo("Single Target")]
+    [ExpandedCustomCombo]
+    [CustomComboInfo("F4/B4 Level sync", "Replaces Fire 4 and Blizzard 4 with Fire 1 and Blizzard 1 under their respective unlock requirements", BLM.JobID)]
+    BlackF1B1Sync = 2527,
 
     [IconsCombo([BLM.Fire4, BLM.Blizzard4, UTL.ArrowLeft, BLM.FlareStar, UTL.Blank, BLM.FlareStar, UTL.Checkmark])]
     [SectionCombo("Single Target")]
@@ -1640,7 +1646,7 @@ public enum CustomComboPreset
     [SecretCustomCombo]
     [CustomComboInfo("Auto-Comet only during Starry", "Automatically use Comet only while Inspiration from Starry Muse is active\n\nNOTE: This prevents forgetting about Comet during the important Starry Muse cast sequence, while otherwise leaving it entirely up to the player to use or waste Comet.", PCT.JobID)]
     PictomancerCometStarryOnly = 4228,
-
+    
     #endregion
     // ====================================================================================
     #region REAPER
@@ -2501,14 +2507,20 @@ public enum CustomComboPreset
     SummonerDemiCarbuncleFeature = 2716,
     
     [IconsCombo([SMN.Deathflare, SMN.Sunflare, SMN.Rekindle, UTL.ArrowLeft, SMN.AstralFlow])]
-    [SectionCombo("Summons features")]
+    [SectionCombo("Rework")]
     [CustomComboInfo("Astral Flow Feature", "Remove elementals from Astral Flow", SMN.JobID)]
     SummonerReworkAstralFlow = 2721,
     
     [IconsCombo([SMN.CrimsonStrike, UTL.ArrowLeft, SMN.CrimsonCyclone])]
-    [SectionCombo("Summons features")]
+    [SectionCombo("Rework")]
     [CustomComboInfo("Crimson Cyclone Fix", "Adds the combo back", SMN.JobID)]
     SummonerReworkCrimsonCyclone = 2722,
+    
+    [IconsCombo([SMN.RubyRite, SMN.TopazRite, SMN.EmeraldRite, UTL.Plus, SMN.RubyCatastrophe, SMN.TopazCatastrophe, SMN.EmeraldCatastrophe])]
+    [SectionCombo("Rework")]
+    [CustomComboInfo("Rites & Catastrophe Leveling", "Syncs levels", SMN.JobID)]
+    SummonerReworkLevels = 2723,
+    
 
     #endregion
     // ====================================================================================
@@ -2691,6 +2703,11 @@ public enum CustomComboPreset
     [ParentCombo(ViperPvPPitComboFeature)]
     [CustomComboInfo("Start with Hunter's Den", "Start with Hunter's Den instead.", VPR.JobID)]
     ViperPvPPitComboStartHuntersFeature = 4122,
+    
+    [SectionCombo("Alternative Playstyle")]
+    [IconsCombo([VPR.VicePit, UTL.ArrowLeft, VPR.HuntersDen, VPR.SwiftskinsDen])]
+    [CustomComboInfo("meow", "mewo", VPR.JobID)]
+    ViperReworkGCD = 4135,
 
     #endregion
     // ====================================================================================

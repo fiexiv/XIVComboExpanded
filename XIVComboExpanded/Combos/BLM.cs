@@ -152,6 +152,31 @@ internal class BlackFireBlizzard4 : CustomCombo
     }
 }
 
+internal class BlackF1B1Sync : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BlackF1B1Sync;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == BLM.Fire4)
+        {
+            if (level < BLM.Levels.Fire4)
+            {
+                return OriginalHook(BLM.Fire);
+            }
+        }
+
+        if (actionID == BLM.Blizzard4)
+        {
+            if (level < BLM.Levels.Blizzard4)
+            {
+                return OriginalHook(BLM.Blizzard);
+            }
+        }
+        return actionID;
+    } 
+}
+
 internal class BlackTranspose : CustomCombo
 {
     protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BlackTransposeUmbralSoulFeature;

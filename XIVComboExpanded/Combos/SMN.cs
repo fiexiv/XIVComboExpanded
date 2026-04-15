@@ -34,10 +34,28 @@ internal static class SMN
         SummonIfrit = 25805,
         SummonTitan = 25806,
         SummonGaruda = 25807,
+        RubyRuin = 25808,
+        TopazRuin = 25809,
+        EmeraldRuin = 25810,
+        RubyRuin2 = 25811,
+        TopazRuin2 = 25812,
+        EmeraldRuin2 = 25813,
+        RubyOutburst = 25814,
+        TopazOutburst = 25815,
+        EmeraldOutburst = 25816,
+        RubyRuin3 = 25817,
+        TopazRuin3 = 25818,
+        EmeraldRuin3 = 25819,
         AstralFlow = 25822,
         TriDisaster = 25826,
+        RubyRite = 25823,
+        TopazRite = 25824,
+        EmeraldRite = 25825,
         Rekindle = 25830,
         SummonPhoenix = 25831,
+        RubyCatastrophe = 25832,
+        TopazCatastrophe = 25833,
+        EmeraldCatastrophe = 25834,
         CrimsonCyclone = 25835,
         MountainBuster = 25836,
         Slipstream = 25837,
@@ -83,15 +101,18 @@ internal static class SMN
             EnergyDrain = 10,
             Fester = 10,
             PreciousBrilliance = 26,
+            Ruin2 = 30,
             Painflare = 40,
             EnergySyphon = 52,
             Ruin3 = 54,
             Ruin4 = 62,
             SearingLight = 66,
             EnkindleBahamut = 70,
+            Rites = 72,
             Rekindle = 80,
             ElementalMastery = 86,
             SummonPhoenix = 80,
+            Catastrophe = 82,
             Necrosis = 92,
             SummonSolarBahamut = 100,
             LuxSolaris = 100;
@@ -397,6 +418,94 @@ internal class SummonerReworkCrimsonCyclone : CustomCombo
                     return OriginalHook(SMN.CrimsonStrike);
                 }
             }
+
+        return actionID;
+    }
+}
+
+internal class SummonerReworkLevels : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SummonerReworkLevels;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        
+        if (IsEnabled(CustomComboPreset.SummonerReworkLevels))
+            if (actionID == SMN.TopazRite)
+            {
+                if (level < SMN.Levels.Rites && level >= SMN.Levels.Ruin3)
+                {
+                    return OriginalHook(SMN.TopazRuin3);
+                }
+
+                if (level < SMN.Levels.Ruin3 && level >= SMN.Levels.Ruin2)
+                {
+                    return OriginalHook(SMN.TopazRuin2);
+                }
+
+                if (level < SMN.Levels.Ruin2 && level >= SMN.Levels.Gemshine)
+                {
+                    return OriginalHook(SMN.TopazRuin);
+                }
+            }
+
+        if (actionID == SMN.RubyRite)
+        {
+            if (level < SMN.Levels.Rites && level >= SMN.Levels.Ruin3)
+            {
+                return OriginalHook(SMN.RubyRuin3);
+            }
+            if (level < SMN.Levels.Ruin3 && level >= SMN.Levels.Ruin2)
+            {
+                return OriginalHook(SMN.RubyRuin2);
+            }
+
+            if (level < SMN.Levels.Ruin2 && level >= SMN.Levels.Gemshine)
+            {
+                return OriginalHook(SMN.RubyRuin);
+            }
+        }
+        
+        if (actionID == SMN.EmeraldRite)
+        {
+            if (level < SMN.Levels.Rites && level >= SMN.Levels.Ruin3)
+            {
+                return OriginalHook(SMN.EmeraldRuin3);
+            }
+            if (level < SMN.Levels.Ruin3 && level >= SMN.Levels.Ruin2)
+            {
+                return OriginalHook(SMN.EmeraldRuin2);
+            }
+
+            if (level < SMN.Levels.Ruin2 && level >= SMN.Levels.Gemshine)
+            {
+                return OriginalHook(SMN.EmeraldRuin);
+            }
+        }
+        
+        if (actionID == SMN.TopazCatastrophe)
+        {
+            if (level < SMN.Levels.Catastrophe && level >= SMN.Levels.PreciousBrilliance)
+            {
+                return OriginalHook(SMN.TopazOutburst);
+            }
+        }
+        
+        if (actionID == SMN.RubyCatastrophe)
+        {
+            if (level < SMN.Levels.Catastrophe && level >= SMN.Levels.PreciousBrilliance)
+            {
+                return OriginalHook(SMN.RubyOutburst);
+            }
+        }
+        
+        if (actionID == SMN.EmeraldCatastrophe)
+        {
+            if (level < SMN.Levels.Catastrophe && level >= SMN.Levels.PreciousBrilliance)
+            {
+                return OriginalHook(SMN.EmeraldOutburst);
+            }
+        }
 
         return actionID;
     }

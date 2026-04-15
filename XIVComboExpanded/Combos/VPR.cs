@@ -827,3 +827,59 @@ internal class ViperoGCDs : CustomCombo
         return actionID;
     }
 }
+
+internal class ViperReworkGCD : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.VprAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == VPR.SteelFangs)
+        {
+            if (IsEnabled(CustomComboPreset.ViperReworkGCD))
+            {
+                if (CanUseAction(VPR.HuntersSting))
+                    return OriginalHook(VPR.HuntersSting);
+                if (CanUseAction(VPR.FlankstingStrike))
+                    return OriginalHook(VPR.FlankstingStrike);
+                if (CanUseAction(VPR.HindstingStrike))
+                    return OriginalHook(VPR.HindstingStrike);
+
+            }
+        }
+        if (actionID == VPR.ReavingFangs)
+        {
+            if (IsEnabled(CustomComboPreset.ViperReworkGCD))
+            {
+                if (CanUseAction(VPR.SwiftskinsSting))
+                    return OriginalHook(VPR.SwiftskinsSting);
+                if (CanUseAction(VPR.FlanksbaneFang))
+                    return OriginalHook(VPR.FlanksbaneFang);
+                if (CanUseAction(VPR.HindsbaneFang))
+                    return OriginalHook(VPR.HindsbaneFang);
+
+            }
+        }
+        if (actionID == VPR.SteelMaw)
+        {
+            if (IsEnabled(CustomComboPreset.ViperReworkGCD))
+            {
+                if (CanUseAction(VPR.HuntersBite))
+                    return OriginalHook(VPR.HuntersBite);
+                if (CanUseAction(VPR.JaggedMaw))
+                    return OriginalHook(VPR.JaggedMaw);
+            }
+        }
+        if (actionID == VPR.ReavingMaw)
+        {
+            if (IsEnabled(CustomComboPreset.ViperReworkGCD))
+            {
+                if (CanUseAction(VPR.SwiftskinsBite))
+                    return OriginalHook(VPR.SwiftskinsBite);
+                if (CanUseAction(VPR.BloodiedMaw))
+                    return OriginalHook(VPR.BloodiedMaw);
+            }
+        }
+        return actionID;
+    }
+}
